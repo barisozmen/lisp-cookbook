@@ -26,7 +26,7 @@
 
 
 (defmacro f-string (format-string &rest values)
-  `(format nil "~A~{ ~A~}" ,format-string (list ,@values)))
+  `(format nil "~A~{ ~A~}" ,format-'string (list ,@values)))
 
 (defmacro my-print (format-string &rest values)
   `(format t "~A~%" (f-string ,format-string ,@values)))
