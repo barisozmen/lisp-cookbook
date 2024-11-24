@@ -30,6 +30,7 @@
     - [A Road to Common Lisp](https://stevelosh.com/blog/2018/08/a-road-to-common-lisp/) - A personal journey into learning Common Lisp.
 
 ### Documentation
+- https://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm
 - https://common-lisp.net/documentation
 - http://blog.quicklisp.org/ - new quicklisp libraries
 
