@@ -1,6 +1,6 @@
-run = "clisp main.lisp"
+run = "clisp \"$REPL_FILEPATH\""
 
-entrypoint = "main.lisp"
+entrypoint = "\"$REPL_FILEPATH\""
 
 [env]
 HAHA = "haha"

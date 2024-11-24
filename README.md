@@ -31,9 +31,12 @@
 
 ### Documentation
 - https://common-lisp.net/documentation
+- http://blog.quicklisp.org/ - new quicklisp libraries
 
 
 ### Other 
+- https://lispcookbook.github.io/cl-cookbook/
+  - [editor-support](https://lispcookbook.github.io/cl-cookbook/editor-support.html)
 - https://github.com/azzamsa/awesome-cl-software?tab=readme-ov-file
 - https://github.com/CodyReichert/awesome-cl 
 - https://leanpub.com/lisphackers/read#peter-seibel-usa - Interviews with Lisp programmers
