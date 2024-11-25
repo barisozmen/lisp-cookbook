@@ -53,3 +53,64 @@ https://github.com/stylewarning/cl-algebraic-data-type Algebraic data types libr
 [video: common lisp debugging: essential tips and tricks](https://www.youtube.com/watch?v=HI1PHUDN5As&t=390s)
 (trace <function name>)
 (untrace <function name>)
+
+
+## All Lisp in Lisp
+"I mean the famous example is of course,
+```
+    (define (eval exp env)
+      (cond ((number? exp) exp)
+            ((string? exp) exp)
+            ((symbol? exp) (lookup exp env)
+            ((eq? (car exp) 'quote) (cadr exp))
+            ((eq? (car exp) 'lambda)
+             (list 'closure (cdr exp) env))
+            ((eq? (car exp) 'cond) (eval-cond (cdr exp))
+            (else (apply 
+                (eval (car exp) env)
+                (eval-list (cdr exp) env)))))
+```    
+which uses a Lisp to define itself. This means roughly that if you understand enough Lisp to understand this program (and the little recursive offshoots like eval-cond), there is nothing else that you have to learn about Lisp. You officially have read the whole language reference and it is all down to libraries after that." from [hackernews discussion](https://news.ycombinator.com/item?id=33600941 )
+
+## All Lisp in Python
+```
+import math
+import operator as op
+
+def standard_env() -> Env:
+    "An environment with some Scheme standard procedures."
+    env = Env()
+    env.update(vars(math)) # sin, cos, sqrt, pi, ...
+    env.update({
+        '+':op.add, '-':op.sub, '*':op.mul, '/':op.truediv, 
+        '>':op.gt, '<':op.lt, '>=':op.ge, '<=':op.le, '=':op.eq, 
+        'abs':     abs,
+        'append':  op.add,  
+        'apply':   lambda proc, args: proc(*args),
+        'begin':   lambda *x: x[-1],
+        'car':     lambda x: x[0],
+        'cdr':     lambda x: x[1:], 
+        'cons':    lambda x,y: [x] + y,
+        'eq?':     op.is_, 
+        'expt':    pow,
+        'equal?':  op.eq, 
+        'length':  len, 
+        'list':    lambda *x: List(x), 
+        'list?':   lambda x: isinstance(x, List), 
+        'map':     map,
+        'max':     max,
+        'min':     min,
+        'not':     op.not_,
+        'null?':   lambda x: x == [], 
+        'number?': lambda x: isinstance(x, Number),  
+		'print':   print,
+        'procedure?': callable,
+        'round':   round,
+        'symbol?': lambda x: isinstance(x, Symbol),
+    })
+    return env
+
+global_env = standard_env()
+```
+From: https://norvig.com/lispy.html
+Also see: https://norvig.com/lispy2.html
