@@ -26,8 +26,8 @@
 
 
 - **Other Good Posts**
-  - **Steve Losh**
-    - [A Road to Common Lisp](https://stevelosh.com/blog/2018/08/a-road-to-common-lisp/) - A personal journey into learning Common Lisp.
+  - [A Road to Common Lisp. Steve Losh](https://stevelosh.com/blog/2018/08/a-road-to-common-lisp/) - A personal journey into learning Common Lisp.
+  - [Python vs Common Lisp](https://lisp-journey.gitlab.io/pythonvslisp/)
 
 ### Documentation
 - https://www.lispworks.com/documentation/HyperSpec/Front/Contents.htm
@@ -43,7 +43,6 @@
 - https://leanpub.com/lisphackers/read#peter-seibel-usa - Interviews with Lisp programmers
 
 - Foreign function interface (FFI) with Python > https://github.com/bendudson/py4cl 
-- Python vs Lisp > https://lisp-journey.gitlab.io/pythonvslisp/ 
 
 
 
