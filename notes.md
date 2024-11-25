@@ -74,43 +74,32 @@ which uses a Lisp to define itself. This means roughly that if you understand en
 
 ## All Lisp in Python
 ```
-import math
-import operator as op
-
-def standard_env() -> Env:
-    "An environment with some Scheme standard procedures."
-    env = Env()
-    env.update(vars(math)) # sin, cos, sqrt, pi, ...
-    env.update({
-        '+':op.add, '-':op.sub, '*':op.mul, '/':op.truediv, 
-        '>':op.gt, '<':op.lt, '>=':op.ge, '<=':op.le, '=':op.eq, 
-        'abs':     abs,
-        'append':  op.add,  
-        'apply':   lambda proc, args: proc(*args),
-        'begin':   lambda *x: x[-1],
-        'car':     lambda x: x[0],
-        'cdr':     lambda x: x[1:], 
-        'cons':    lambda x,y: [x] + y,
-        'eq?':     op.is_, 
-        'expt':    pow,
-        'equal?':  op.eq, 
-        'length':  len, 
-        'list':    lambda *x: List(x), 
-        'list?':   lambda x: isinstance(x, List), 
-        'map':     map,
-        'max':     max,
-        'min':     min,
-        'not':     op.not_,
-        'null?':   lambda x: x == [], 
-        'number?': lambda x: isinstance(x, Number),  
-		'print':   print,
-        'procedure?': callable,
-        'round':   round,
-        'symbol?': lambda x: isinstance(x, Symbol),
-    })
-    return env
-
-global_env = standard_env()
+def eval(x, env=global_env):
+    "Evaluate an expression in an environment."
+    if isinstance(x, Symbol):    # variable reference
+        return env.find(x)[x]
+    elif not isinstance(x, List):# constant 
+        return x   
+    op, *args = x       
+    if op == 'quote':            # quotation
+        return args[0]
+    elif op == 'if':             # conditional
+        (test, conseq, alt) = args
+        exp = (conseq if eval(test, env) else alt)
+        return eval(exp, env)
+    elif op == 'define':         # definition
+        (symbol, exp) = args
+        env[symbol] = eval(exp, env)
+    elif op == 'set!':           # assignment
+        (symbol, exp) = args
+        env.find(symbol)[symbol] = eval(exp, env)
+    elif op == 'lambda':         # procedure
+        (parms, body) = args
+        return Procedure(parms, body, env)
+    else:                        # procedure call
+        proc = eval(op, env)
+        vals = [eval(arg, env) for arg in args]
+        return proc(*vals)
 ```
 From: https://norvig.com/lispy.html
 Also see: https://norvig.com/lispy2.html
