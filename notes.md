@@ -47,3 +47,9 @@ Usage: by #?
 https://github.com/guicho271828/trivia Pattern matching library
 
 https://github.com/stylewarning/cl-algebraic-data-type Algebraic data types library
+
+
+## Debugging
+[video: common lisp debugging: essential tips and tricks](https://www.youtube.com/watch?v=HI1PHUDN5As&t=390s)
+(trace <function name>)
+(untrace <function name>)
