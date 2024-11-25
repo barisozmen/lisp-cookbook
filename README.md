@@ -42,7 +42,9 @@
 - https://github.com/CodyReichert/awesome-cl 
 - https://leanpub.com/lisphackers/read#peter-seibel-usa - Interviews with Lisp programmers
 
-- Foreign function interface (FFI) with Python > https://github.com/bendudson/py4cl 
+- Foreign function interface (FFI) with Python > https://github.com/bendudson/py4cl
+
+- https://www.youtube.com/@the-lisper - Nice explanations
 
 
 
