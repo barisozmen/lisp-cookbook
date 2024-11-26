@@ -72,6 +72,8 @@ https://github.com/stylewarning/cl-algebraic-data-type Algebraic data types libr
 ```    
 which uses a Lisp to define itself. This means roughly that if you understand enough Lisp to understand this program (and the little recursive offshoots like eval-cond), there is nothing else that you have to learn about Lisp. You officially have read the whole language reference and it is all down to libraries after that." from [hackernews discussion](https://news.ycombinator.com/item?id=33600941 )
 
+ALan Kay's 1972 claim that you could define the most powerful language in the world in a page of code. http://gagne.homedns.org/~tgagne/earlyhistoryst.html
+
 ## All Lisp in Python
 ```
 def eval(x, env=global_env):
